@@ -1,6 +1,7 @@
 package racing.domain;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.springframework.beans.factory.annotation.Autowired;
 import racing.model.*;
 import racing.model.policy.BooleanForward;
 import racing.model.policy.FourUpperForward;
@@ -25,9 +26,13 @@ public class RacingGame {
 
 	private int playCount;
 
-//	private ForwardPolicy forwardPolicy = new FourUpperForward();
-//	private ForwardPolicy forwardPolicy = new TwoUnderForward();
-	private ForwardPolicy forwardPolicy = new BooleanForward();
+	private ForwardPolicy forwardPolicy;
+
+	public RacingGame() {
+	}
+	public RacingGame(ForwardPolicy forwardPolicy) {
+		this.forwardPolicy = forwardPolicy;
+	}
 
 	public void start() {
 		printInputUI();
